@@ -8,12 +8,12 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-// Signature represents an Ethereum signature in the standard V, R, S format.
+// Signature represents an Ethereum signature in the R, S, V format.
 // Compatible with Ethereum's EIP-155 transaction signatures.
 type Signature struct {
-	V uint8    // Recovery identifier (+27 per Ethereum convention)
 	R [32]byte // First 32 bytes of the signature
 	S [32]byte // Second 32 bytes of the signature
+	V byte     // Recovery identifier (+27 per Ethereum convention)
 }
 
 // Sign hashes the provided data using Keccak256 and signs it with the given private key.
