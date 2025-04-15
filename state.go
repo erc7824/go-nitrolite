@@ -7,13 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-// State represents the current state of a channel.
-type State struct {
-	Data        []byte        // Arbitrary channel state information
-	Allocations [2]Allocation // Fund distribution between participants
-	Sigs        []Signature   // Signatures from channel participants
-}
-
+// EncodeState encodes channel state into a byte array using channelID, state data, and allocations.
 func EncodeState(channelID common.Hash, stateData []byte, allocations []Allocation) ([]byte, error) {
 	allocationType, err := abi.NewType("tuple[]", "", []abi.ArgumentMarshaling{
 		{
