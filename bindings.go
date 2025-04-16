@@ -1,3 +1,6 @@
+// Code generated - DO NOT EDIT.
+// This file is a generated binding and any manual changes will be lost.
+
 package nitrolite
 
 import (
@@ -25,33 +28,33 @@ var (
 	_ = event.NewSubscription
 )
 
-// Allocation represents the fund allocation in the state channel.
+// Allocation is an auto generated low-level Go binding around an user-defined struct.
 type Allocation struct {
-	Destination common.Address // Recipient of the funds
-	Token       common.Address // ERC-20 token address (zero address for ETH)
-	Amount      *big.Int       // Quantity of tokens allocated
+	Destination common.Address
+	Token       common.Address
+	Amount      *big.Int
 }
 
-// Channel represents the configuration of a state channel between two participants.
+// Channel is an auto generated low-level Go binding around an user-defined struct.
 type Channel struct {
-	Participants []common.Address // Addresses of the two channel parties
-	Adjudicator  common.Address   // Address of the dispute resolution contract
-	Challenge    uint64           // Challenge period duration in seconds
-	Nonce        uint64           // Unique identifier for this channel
+	Participants []common.Address
+	Adjudicator  common.Address
+	Challenge    uint64
+	Nonce        uint64
 }
 
-// Signature represents an Ethereum signature in the R, S, V format.
+// Signature is an auto generated low-level Go binding around an user-defined struct.
 type Signature struct {
-	R [32]byte // First 32 bytes of the signature
-	S [32]byte // Second 32 bytes of the signature
-	V uint8    // Recovery identifier (+27 per Ethereum convention)
+	V uint8
+	R [32]byte
+	S [32]byte
 }
 
-// State represents the current state of a channel.
+// State is an auto generated low-level Go binding around an user-defined struct.
 type State struct {
-	Data        []byte       // Arbitrary channel state information
-	Allocations []Allocation // Fund distribution between participants
-	Sigs        []Signature  // Signatures from channel participants
+	Data        []byte
+	Allocations []Allocation
+	Sigs        []Signature
 }
 
 // CustodyMetaData contains all meta data concerning the Custody contract.
