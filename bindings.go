@@ -52,6 +52,8 @@ type Signature struct {
 
 // State is an auto generated low-level Go binding around an user-defined struct.
 type State struct {
+	Intent      uint8
+	Version     *big.Int
 	Data        []byte
 	Allocations []Allocation
 	Sigs        []Signature
@@ -59,12 +61,34 @@ type State struct {
 
 // CustodyMetaData contains all meta data concerning the Custody contract.
 var CustodyMetaData = &bind.MetaData{
-	ABI: "[{\"type\":\"function\",\"name\":\"challenge\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"checkpoint\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"close\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"create\",\"inputs\":[{\"name\":\"ch\",\"type\":\"tuple\",\"internalType\":\"structChannel\",\"components\":[{\"name\":\"participants\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"adjudicator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"challenge\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"nonce\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]},{\"name\":\"initial\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"deposit\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"payable\"},{\"type\":\"function\",\"name\":\"getAccountChannels\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32[]\",\"internalType\":\"bytes32[]\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getAccountInfo\",\"inputs\":[{\"name\":\"user\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"available\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"locked\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"channelCount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"join\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"index\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"sig\",\"type\":\"tuple\",\"internalType\":\"structSignature\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"reset\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"newChannel\",\"type\":\"tuple\",\"internalType\":\"structChannel\",\"components\":[{\"name\":\"participants\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"adjudicator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"challenge\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"nonce\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]},{\"name\":\"newDeposit\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"Challenged\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"expiration\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"ChannelClosed\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Checkpointed\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Created\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"channel\",\"type\":\"tuple\",\"indexed\":false,\"internalType\":\"structChannel\",\"components\":[{\"name\":\"participants\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"adjudicator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"challenge\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"nonce\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]},{\"name\":\"initial\",\"type\":\"tuple\",\"indexed\":false,\"internalType\":\"structState\",\"components\":[{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Joined\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"index\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Opened\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"ChallengeNotExpired\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ChannelNotFinal\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ChannelNotFound\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignature\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureLength\",\"inputs\":[{\"name\":\"length\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureS\",\"inputs\":[{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"InsufficientBalance\",\"inputs\":[{\"name\":\"available\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"required\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"InvalidAdjudicator\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidAmount\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidChallengePeriod\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidParticipant\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidState\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidStateSignatures\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidStatus\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"TransferFailed\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]}]",
+	ABI: "[{\"type\":\"function\",\"name\":\"challenge\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"checkpoint\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"close\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"create\",\"inputs\":[{\"name\":\"ch\",\"type\":\"tuple\",\"internalType\":\"structChannel\",\"components\":[{\"name\":\"participants\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"adjudicator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"challenge\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"nonce\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]},{\"name\":\"initial\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"deposit\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"payable\"},{\"type\":\"function\",\"name\":\"getAccountChannels\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32[]\",\"internalType\":\"bytes32[]\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"getAccountInfo\",\"inputs\":[{\"name\":\"user\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"}],\"outputs\":[{\"name\":\"available\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"locked\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"channelCount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"stateMutability\":\"view\"},{\"type\":\"function\",\"name\":\"join\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"index\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"sig\",\"type\":\"tuple\",\"internalType\":\"structSignature\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"resize\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"candidate\",\"type\":\"tuple\",\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]},{\"name\":\"proofs\",\"type\":\"tuple[]\",\"internalType\":\"structState[]\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}],\"outputs\":[],\"stateMutability\":\"nonpayable\"},{\"type\":\"event\",\"name\":\"Challenged\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"expiration\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Checkpointed\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Closed\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Created\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"channel\",\"type\":\"tuple\",\"indexed\":false,\"internalType\":\"structChannel\",\"components\":[{\"name\":\"participants\",\"type\":\"address[]\",\"internalType\":\"address[]\"},{\"name\":\"adjudicator\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"challenge\",\"type\":\"uint64\",\"internalType\":\"uint64\"},{\"name\":\"nonce\",\"type\":\"uint64\",\"internalType\":\"uint64\"}]},{\"name\":\"initial\",\"type\":\"tuple\",\"indexed\":false,\"internalType\":\"structState\",\"components\":[{\"name\":\"intent\",\"type\":\"uint8\",\"internalType\":\"enumStateIntent\"},{\"name\":\"version\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\",\"internalType\":\"bytes\"},{\"name\":\"allocations\",\"type\":\"tuple[]\",\"internalType\":\"structAllocation[]\",\"components\":[{\"name\":\"destination\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"name\":\"sigs\",\"type\":\"tuple[]\",\"internalType\":\"structSignature[]\",\"components\":[{\"name\":\"v\",\"type\":\"uint8\",\"internalType\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]}]}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Joined\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"index\",\"type\":\"uint256\",\"indexed\":false,\"internalType\":\"uint256\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Opened\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"}],\"anonymous\":false},{\"type\":\"event\",\"name\":\"Resized\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"indexed\":true,\"internalType\":\"bytes32\"},{\"name\":\"deltaAllocations\",\"type\":\"int256[]\",\"indexed\":false,\"internalType\":\"int256[]\"}],\"anonymous\":false},{\"type\":\"error\",\"name\":\"ChallengeNotExpired\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ChannelNotFinal\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ChannelNotFound\",\"inputs\":[{\"name\":\"channelId\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignature\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureLength\",\"inputs\":[{\"name\":\"length\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"ECDSAInvalidSignatureS\",\"inputs\":[{\"name\":\"s\",\"type\":\"bytes32\",\"internalType\":\"bytes32\"}]},{\"type\":\"error\",\"name\":\"InsufficientBalance\",\"inputs\":[{\"name\":\"available\",\"type\":\"uint256\",\"internalType\":\"uint256\"},{\"name\":\"required\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]},{\"type\":\"error\",\"name\":\"InvalidAdjudicator\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidAllocations\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidAmount\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidChallengePeriod\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidParticipant\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidState\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidStateSignatures\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"InvalidStatus\",\"inputs\":[]},{\"type\":\"error\",\"name\":\"TransferFailed\",\"inputs\":[{\"name\":\"token\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"to\",\"type\":\"address\",\"internalType\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\",\"internalType\":\"uint256\"}]}]",
+	Bin: "0x608080604052346015576139b9908161001a8239f35b5f80fdfe60806040526004361015610011575f80fd5b5f3560e01c8063259311c914611d1057806347e7ef2414611bf35780636332fef614611b7d5780637de7ad62146116b85780637e2d8d7214611601578063a22b823d14611424578063d0cce1e81461107b578063d37ff7b51461084f578063de22731f146102075763f3fef3a314610087575f80fd5b34610203576040600319360112610203576100a0612534565b60243590335f52600160205260405f20906001600160a01b0381165f528160205260405f20548381106101ec57506001600160a01b031680610162575f80808086335af13d1561015d573d6100f4816125f1565b9061010260405192836125ce565b81525f60203d92013e5b15610129575f5260205261012560405f2091825461283a565b9055005b90507fbf182be8000000000000000000000000000000000000000000000000000000005f526004523360245260445260645ffd5b61010c565b6040517fa9059cbb0000000000000000000000000000000000000000000000000000000081523360048201528360248201526020816044815f865af19081156101e1575f916101b2575b5061010c565b6101d4915060203d6020116101da575b6101cc81836125ce565b810190612878565b5f6101ac565b503d6101c2565b6040513d5f823e3d90fd5b839063cf47918160e01b5f5260045260245260445ffd5b5f80fd5b3461020357610215366124b8565b5050815f525f60205260405f2090600382019060ff825416600581101561083b57801561082857600281036107b35750803560048110156102035761025981612917565b6002810361078b576020820135801561078b576080830191600261027d8486612a4d565b905003610763576102a061029087612a83565b61029a36876126f4565b90613247565b1561076357600d8601906102b381612917565b60ff60ff198354169116179055600e850155600f84016102d66040840184612adf565b9067ffffffffffffffff821161074f576102f08354612b12565b601f8111610714575b505f90601f83116001146106b05761032892915f91836106a5575b50508160011b915f199060031b1c19161790565b90555b6010840161033c6060840184612a4d565b91906103488383612b60565b905f5260205f205f915b83831061063f575050505061036b906011850192612a4d565b906103768284612be2565b915f5260205f205f925b8284106106015750505050600460ff198254161790555b601081018054905f5b82811061059e57505050335f5260016020526103c282600160405f200161377d565b508054905f5b8281106105655783805f525f60205260405f2080545f82558061054b575b505f60018201555f60028201555f600382015561040560048201613225565b61041160088201613225565b5f600c8201555f600d8201555f600e820155600f81016104318154612b12565b9081610508575b5050601081018054905f8155816104cf575b50506011018054905f815581610482575b827f7b6ac8bce3193cb9464e9070476bf8926e449f5f743f8c7578eea15265467d795f80a2005b816003029160038304036104bb575f5260205f20908101905b8181101561045b57805f600392555f60018201555f60028201550161049b565b634e487b7160e01b5f52601160045260245ffd5b816003029160038304036104bb575f5260205f20908101905b8181101561044a57805f600392555f60018201555f6002820155016104e8565b81601f5f931160011461051f5750555b8280610438565b8183526020832061053b91601f0160051c810190600101612b4a565b8082528160208120915555610518565b61055f90825f5260205f2090810190612b4a565b826103e6565b806001600160a01b0361057a60019385613080565b90549060031b1c165f5281602052610597858360405f200161377d565b50016103c8565b81548110156105ed57600190825f526105e76105c160205f206003840201612ea0565b6001600160a01b038151169060406001600160a01b03602083015116910151918961362e565b016103a0565b634e487b7160e01b5f52603260045260245ffd5b80359060ff821680920361020357606060039160019360ff198654161785556020810135848601556040810135600286015501920193019290610380565b60036060826001600160a01b03610657600195612bce565b166001600160a01b031986541617855561067360208201612bce565b6001600160a01b0385870191166001600160a01b03198254161790556040810135600286015501920192019190610352565b013590508980610314565b601f19831691845f5260205f20925f5b8181106106fc57509084600195949392106106e3575b505050811b01905561032b565b01355f19600384901b60f8161c191690558880806106d6565b919360206001819287870135815501950192016106c0565b61073f90845f5260205f20601f850160051c81019160208610610745575b601f0160051c0190612b4a565b886102f9565b9091508190610732565b634e487b7160e01b5f52604160045260245ffd5b7f773a750f000000000000000000000000000000000000000000000000000000005f5260045ffd5b7fbaf3f0f7000000000000000000000000000000000000000000000000000000005f5260045ffd5b60031415905061080057600c82015442106107d857600460ff19825416179055610397565b7f151f07fe000000000000000000000000000000000000000000000000000000005f5260045ffd5b7ff525e320000000000000000000000000000000000000000000000000000000005f5260045ffd5b846379c1d89f60e11b5f5260045260245ffd5b634e487b7160e01b5f52602160045260245ffd5b346102035760406003193601126102035760043567ffffffffffffffff8111610203578060040190803603916080600319840112610203576024359167ffffffffffffffff831161020357826004019060a060031985360301126102035760026108b984806130fd565b90500361105357602481016001600160a01b036108d582612bce565b161561102b57604482019067ffffffffffffffff6108f283613133565b16156110035783359260048410156102035761090d84612917565b6001840361078b5760248701358061078b5761093161092c368961315d565b613597565b97885f525f60205260ff600360405f20015416600581101561083b576108005761096e61095e368a61315d565b610968368a6126f4565b906133b1565b6084820190600161097f838b612a4d565b90500361076357610990828a612a4d565b156105ed5761099f8b806130fd565b929092156105ed576109be6109b66109c494612bce565b9236906126bb565b90613498565b156107635760648201916109d8838a612a4d565b90506109e48b806130fd565b91905003610fdb578a5f525f60205260405f2093610a028b806130fd565b9067ffffffffffffffff821161074f5768010000000000000000821161074f578654828855808310610fbf575b50865f5260205f205f5b838110610fa45750505050600185016001600160a01b03610a5989612bce565b166001600160a01b0319825416178155610a7289613133565b7fffffffff0000000000000000ffffffffffffffffffffffffffffffffffffffff7bffffffffffffffff000000000000000000000000000000000000000083549260a01b1691161790556002850198606487019967ffffffffffffffff610ad88c613133565b82547fffffffffffffffffffffffffffffffffffffffffffffffff00000000000000001691161790556003860180547fffffffffffffffffffffff000000000000000000000000000000000000000000163360081b74ffffffffffffffffffffffffffffffffffffffff0016176001179055600d860190610b5881612917565b60ff60ff198354169116179055600e850155610b7b6044600f860192018a612adf565b9067ffffffffffffffff821161074f57610b958354612b12565b601f8111610f74575b505f90601f8311600114610f1057610bcc92915f9183610f055750508160011b915f199060031b1c19161790565b90555b60108301610bdd838a612a4d565b9190610be98383612b60565b905f5260205f205f915b838310610e9f5750505050610c0c601184019189612a4d565b90610c178284612be2565b915f5260205f205f925b828410610e61575050505088610c3789806130fd565b60088501936004860192505f5b828110610dcb57505050916001600160a01b0380610c63600995613095565b610c7982825116956020830196875191336134d0565b5116166001600160a01b031982541617905551910155335f526001602052610ca787600160405f2001613715565b5060405197604089527fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdd60c08a019735910181121561020357016024600482013591019567ffffffffffffffff8211610203578160051b36038713610203578190608060408b01525260e0880195905f5b818110610da35750505085947feb84f2497711f038aa068f535dac65569ca5f694054c11ee7439cde9443821649467ffffffffffffffff610d868a9682610d7b60209d986001600160a01b03610d70610d989a61254a565b1660608b0152613148565b166080880152613148565b1660a085015283820389850152612ca8565b0390a2604051908152f35b9091966020806001926001600160a01b03610dbd8c61254a565b168152019801929101610d18565b8192939450610e348c6040610e0584610df387610dff6020610df985610df360019d8b612a4d565b90612c63565b01612bce565b95612a4d565b01356001600160a01b0360405192610e1c8461257a565b1682526020820152610e2e8388612c50565b906130bc565b610e56604051610e438161257a565b5f81525f6020820152610e2e8389612c50565b01908c939291610c44565b80359060ff821680920361020357606060039160019360ff198654161785556020810135848601556040810135600286015501920193019290610c21565b60036060826001600160a01b03610eb7600195612bce565b166001600160a01b0319865416178555610ed360208201612bce565b6001600160a01b0385870191166001600160a01b03198254161790556040810135600286015501920192019190610bf3565b013590508f80610314565b601f19831691845f5260205f20925f5b818110610f5c5750908460019594939210610f43575b505050811b019055610bcf565b01355f19600384901b60f8161c191690558e8080610f36565b91936020600181928787013581550195019201610f20565b610f9e90845f5260205f20601f850160051c8101916020861061074557601f0160051c0190612b4a565b8e610b9e565b6001906020610fb285612bce565b9401938184015501610a39565b610fd590885f528360205f209182019101612b4a565b8f610a2f565b7f52e4cb1c000000000000000000000000000000000000000000000000000000005f5260045ffd5b7fb4e12433000000000000000000000000000000000000000000000000000000005f5260045ffd5b7fea9e70ce000000000000000000000000000000000000000000000000000000005f5260045ffd5b7fa145c43e000000000000000000000000000000000000000000000000000000005f5260045ffd5b3461020357611089366124b8565b91835f525f60205260405f2092600384019260ff84541691600583101561083b57821561141157600483146108005760808401926110c78486612a4d565b905015610763576001811480611404575b61078b57600214806113f8575b61078b57602061111b916001600160a01b036001890154169360405193849283926305b959ef60e01b8452898c60048601612e08565b0381855afa9081156101e1575f916113d9575b501561078b57602083013590600d8601600e8701918254841461078b5761115f908661115984612eda565b916132e9565b1561078b57843560048110156102035761117881612917565b60ff60ff19835416911617905555600f84016111976040840184612adf565b9067ffffffffffffffff821161074f576111b18354612b12565b601f81116113a9575b505f90601f8311600114611345576111e892915f91836106a55750508160011b915f199060031b1c19161790565b90555b601084016111fc6060840184612a4d565b91906112088383612b60565b905f5260205f205f915b8383106112df575050505061122b906011850192612a4d565b906112368284612be2565b915f5260205f205f925b8284106112a1575050505060ff815416600581101561083b57600314611288575b827f1f681d6befe6e92b986338164917aaa3f065b8d2de29bb520aa373114e5ec0345f80a2005b5f91600c91600260ff1982541617905501558180611261565b80359060ff821680920361020357606060039160019360ff198654161785556020810135848601556040810135600286015501920193019290611240565b60036060826001600160a01b036112f7600195612bce565b166001600160a01b031986541617855561131360208201612bce565b6001600160a01b0385870191166001600160a01b03198254161790556040810135600286015501920192019190611212565b601f19831691845f5260205f20925f5b8181106113915750908460019594939210611378575b505050811b0190556111eb565b01355f19600384901b60f8161c1916905588808061136b565b91936020600181928787013581550195019201611355565b6113d390845f5260205f20601f850160051c8101916020861061074557601f0160051c0190612b4a565b886111ba565b6113f2915060203d6020116101da576101cc81836125ce565b8761112e565b506020840135156110e5565b50602085013515156110d8565b866379c1d89f60e11b5f5260045260245ffd5b346102035760a0600319360112610203576024356004356060367fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbc011261020357805f525f60205260405f20600381019060ff825416600581101561083b5780156115ee575f19016108005760018403611053576008810160016114a88683612c50565b500154611053576001600160a01b036114c18684613080565b90549060031b1c166114e16114d584612a83565b610968600d8601612eda565b906040516114ee81612596565b6044359260ff841684036102035761151793825260643560208301526084356040830152613498565b15610763577fe8e915db7b3549b9e9e9b3e2ec2dc3edd1f76961504366998824836401f6846a6020866115808794610e2e8361156061155a879d60048c01612c50565b50613095565b9261157b6001600160a01b0385511688860151908b336134d0565b612c50565b335f526001825261159784600160405f2001613715565b50604051908152a26007600b820154910154146115b8575b50604051908152f35b600260ff19825416179055807fd087f17acc177540af5f382bc30c65363705b90855144d285a822536ee11fdd15f80a2826115af565b836379c1d89f60e11b5f5260045260245ffd5b34610203576020600319360112610203576001600160a01b03611622612534565b165f526001602052600160405f2001604051806020835491828152019081935f5260205f20905f5b8181106116a257505050816116609103826125ce565b604051918291602083019060208452518091526040830191905f5b818110611689575050500390f35b825184528594506020938401939092019160010161167b565b825484526020909301926001928301920161164a565b34610203576116c6366124b8565b9091835f525f60205260405f2092600384019260ff84541691600583101561083b57821561141157600483146108005760808401926117058486612a4d565b905015610763576001811480611b70575b61078b5760021480611b64575b61078b5760408401916117368386612adf565b9050611aac575b6117478386612adf565b9050158015611a70575b6119da575b5050600d8501833560048110156102035761177081612917565b60ff60ff1983541691161790556020830135600e860155611795600f86019184612adf565b9067ffffffffffffffff821161074f576117af8354612b12565b601f81116119aa575b505f90601f8311600114611946576117e692915f91836106a55750508160011b915f199060031b1c19161790565b90555b601084016117fa6060840184612a4d565b91906118068383612b60565b905f5260205f205f915b8383106118e05750505050611829906011850192612a4d565b906118348284612be2565b915f5260205f205f925b8284106118a257867f08818bbbf6e59017d5461143d9f1c4e3fb74703f7fb792c207cbeed4b344cefc60208888600c61188867ffffffffffffffff600185015460a01c1642612a40565b9201918255600360ff1982541617905554604051908152a2005b80359060ff821680920361020357606060039160019360ff19865416178555602081013584860155604081013560028601550192019301929061183e565b60036060826001600160a01b036118f8600195612bce565b166001600160a01b031986541617855561191460208201612bce565b6001600160a01b0385870191166001600160a01b03198254161790556040810135600286015501920192019190611810565b601f19831691845f5260205f20925f5b8181106119925750908460019594939210611979575b505050811b0190556117e9565b01355f19600384901b60f8161c1916905588808061196c565b91936020600181928787013581550195019201611956565b6119d490845f5260205f20601f850160051c8101916020861061074557601f0160051c0190612b4a565b886117b8565b6020611a0c916001600160a01b0360018a0154169360405193849283926305b959ef60e01b84528a8d60048601612e08565b0381855afa9081156101e1575f91611a51575b501561078b57600e86015460208501351461078b57611a459084611159600d8901612eda565b1561078b578680611756565b611a6a915060203d6020116101da576101cc81836125ce565b88611a1f565b508435600481101561020357611a8581612917565b60018114159081611a97575b50611751565b60039150611aa481612917565b141589611a91565b8435600481101561020357611ac081612917565b60018103611acf575b5061173d565b600390611adb81612917565b14611ae7575b88611ac9565b611afa6005880154600789015490612a40565b60608601611b088188612a4d565b919091156105ed57611b1a9088612a4d565b600192919210156105ed57604060a0611b37930135910135612a40565b14611ae1577f52e4cb1c000000000000000000000000000000000000000000000000000000005f5260045ffd5b50602084013515611723565b5060208501351515611716565b3461020357604060031936011261020357611b96612534565b6024356001600160a01b0381168103610203576001600160a01b03606092165f5260016020526001600160a01b0360405f2091165f528060205260405f209060018083549301549101549060405192835260208301526040820152f35b604060031936011261020357611c07612534565b602435906001600160a01b031680611c6a57813403611c42575b335f52600160205260405f20905f5260205261012560405f20918254612a40565b7f2c5211c6000000000000000000000000000000000000000000000000000000005f5260045ffd5b6040517f23b872dd0000000000000000000000000000000000000000000000000000000081523360048201523060248201528260448201526020816064815f865af19081156101e1575f91611cf1575b50611c21577fbf182be8000000000000000000000000000000000000000000000000000000005f526004523060245260445260645ffd5b611d0a915060203d6020116101da576101cc81836125ce565b83611cba565b3461020357611d1e366124b8565b919290815f525f60205260405f209160ff600384015416600581101561083b5780156124a5577ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0161080057831561078b57813592609e1983360301938481121561020357611d9090840136906126f4565b905f198601968688116104bb57601f19611dc2611dac8a61260d565b99611dba6040519b8c6125ce565b808b5261260d565b015f5b81811061246e57505060015b87811015611e21578060051b86013587811215610203575f198201919087018183116104bb57828b611e13600195611e0d611e1a9536906126f4565b92612864565b528b612864565b5001611dd1565b50876001600160a01b0360018401541660405180926305b959ef60e01b825260606004830152611e69611e5760648401886128d0565b60031984820301602485015288612946565b600319838203016044840152815180825260208201916020808360051b8301019401925f915b83831061243d57505050505091818060209403915afa9081156101e1575f9161241e575b501561078b576020810135916020840151600181018091116104bb57830361078b5760608201611eed611ee68285612a4d565b3691612625565b600281510361078b576001600160a01b036020611f188282611f0e86612847565b5101511693612854565b510151160361078b57611f37611f2d83612a83565b61029a36866126f4565b156107635760408301611f4a8185612adf565b810195906020818803126102035780359067ffffffffffffffff821161020357019686601f8901121561020357873596611f838861260d565b98611f916040519a8b6125ce565b888a5260208a01906020829a60051b82010192831161020357602001905b82821061240e57505050853590600482101561020357611fce82612917565b6003820361078b5760600151611fe7611ee68689612a4d565b60028a510361078b575f5b600281106123a857505050600485016001600160a01b03815416895f5b888d600283106122a4575092505050600d9150019061202d81612917565b60ff60ff198354169116179055600e84015561204d600f84019185612adf565b9067ffffffffffffffff821161074f576120678354612b12565b601f8111612274575b505f90601f83116001146122105761209e92915f91836122055750508160011b915f199060031b1c19161790565b90555b6120af601083019184612a4d565b91906120bb8383612b60565b905f5260205f205f915b83831061219f575050505060116120e29101916080810190612a4d565b906120ed8284612be2565b915f5260205f205f925b828410612161575050505060405191602083019060208452518091526040830191905f5b81811061214b57857ff3b6c524f73df7344d9fcf2f960a57aba7fba7e292d8b79ed03d786f7b2b112f86860387a2005b825184526020938401939092019160010161211b565b80359060ff821680920361020357606060039160019360ff1986541617855560208101358486015560408101356002860155019201930192906120f7565b60036060826001600160a01b036121b7600195612bce565b166001600160a01b03198654161785556121d360208201612bce565b6001600160a01b0385870191166001600160a01b031982541617905560408101356002860155019201920191906120c5565b013590508a80610314565b601f19831691845f5260205f20925f5b81811061225c5750908460019594939210612243575b505050811b0190556120a1565b01355f19600384901b60f8161c19169055898080612236565b91936020600181928787013581550195019201612220565b61229e90845f5260205f20601f850160051c8101916020861061074557601f0160051c0190612b4a565b89612070565b84906122ca846001600160a01b036122bc8287613080565b90549060031b1c1696612864565b51945f8613156123235784600887956122ee600199612318978b9761230e976134d0565b846122f9848d612c50565b5001612306888254612a40565b905501612c50565b5001918254612a40565b90555b018a9061200f565b925050505f8312612339575b506001915061231b565b7f800000000000000000000000000000000000000000000000000000000000000083146104bb576123a060018f8460088e61237e612396948b879b5f03998a9261362e565b84612389848d612c50565b500161230688825461283a565b500191825461283a565b90558d61232f565b60406123b48285612864565b5101516123c1828d612864565b51905f82820192831291129080158216911516176104bb5760406123e58385612864565b5101518082036123f9575050600101611ff2565b63cf47918160e01b5f5260045260245260445ffd5b8135815260209182019101611faf565b612437915060203d6020116101da576101cc81836125ce565b85611eb3565b91939550919360208061245c83601f1986600196030187528951612946565b97019301930190928795949293611e8f565b60209060405161247d8161255e565b5f81525f83820152606060408201526060808201526060608082015282828d01015201611dc5565b506379c1d89f60e11b5f5260045260245ffd5b906060600319830112610203576004359160243567ffffffffffffffff81116102035760a06003198284030112610203576004019160443567ffffffffffffffff811161020357826023820112156102035780600401359267ffffffffffffffff84116102035760248460051b83010111610203576024019190565b600435906001600160a01b038216820361020357565b35906001600160a01b038216820361020357565b60a0810190811067ffffffffffffffff82111761074f57604052565b6040810190811067ffffffffffffffff82111761074f57604052565b6060810190811067ffffffffffffffff82111761074f57604052565b6080810190811067ffffffffffffffff82111761074f57604052565b90601f601f19910116810190811067ffffffffffffffff82111761074f57604052565b67ffffffffffffffff811161074f57601f01601f191660200190565b67ffffffffffffffff811161074f5760051b60200190565b9291926126318261260d565b9361263f60405195866125ce565b606060208685815201930282019181831161020357925b8284106126635750505050565b60608483031261020357602060609160405161267e81612596565b6126878761254a565b815261269483880161254a565b8382015260408701356040820152815201930192612656565b359060ff8216820361020357565b9190826060910312610203576040516126d381612596565b60408082946126e1816126ad565b8452602081013560208501520135910152565b919060a0838203126102035760405161270c8161255e565b80938035600481101561020357825260208101356020830152604081013567ffffffffffffffff811161020357810183601f82011215610203578035612751816125f1565b9161275f60405193846125ce565b818352856020838301011161020357815f92602080930183860137830101526040830152606081013567ffffffffffffffff811161020357810183601f8201121561020357838160206127b493359101612625565b606083015260808101359067ffffffffffffffff8211610203570182601f820112156102035780356127e58161260d565b936127f360405195866125ce565b8185526020606081870193028401019281841161020357602001915b838310612820575050505060800152565b602060609161282f84866126bb565b81520192019161280f565b919082039182116104bb57565b8051156105ed5760200190565b8051600110156105ed5760400190565b80518210156105ed5760209160051b010190565b90816020910312610203575180151581036102035790565b90602082549182815201915f5260205f20905f5b8181106128b15750505090565b82546001600160a01b03168452602090930192600192830192016128a4565b9060808152606067ffffffffffffffff60026128ef6080850186612890565b948260018201546001600160a01b038116602088015260a01c16604086015201541691015290565b6004111561083b57565b90601f19601f602080948051918291828752018686015e5f8582860101520116010190565b805161295181612917565b825260208101516020830152612976604082015160a0604085015260a0840190612921565b906060810151918381036060850152602080845192838152019301905f5b8181106129f85750505060800151916080818303910152602080835192838152019201905f5b8181106129c75750505090565b909192602060606001926040875160ff815116835284810151858401520151604082015201940191019190916129ba565b9091936020612a3660019287519060406060926001600160a01b0381511683526001600160a01b036020820151166020840152015160408201520190565b9501929101612994565b919082018092116104bb57565b903590601e1981360301821215610203570180359067ffffffffffffffff82116102035760200191606082023603831361020357565b90604051612a90816125b2565b606067ffffffffffffffff60028395604051612ab781612ab08185612890565b03826125ce565b85528260018201546001600160a01b038116602088015260a01c166040860152015416910152565b903590601e1981360301821215610203570180359067ffffffffffffffff82116102035760200191813603831361020357565b90600182811c92168015612b40575b6020831014612b2c57565b634e487b7160e01b5f52602260045260245ffd5b91607f1691612b21565b818110612b55575050565b5f8155600101612b4a565b9068010000000000000000811161074f57815491818155828210612b8357505050565b826003029260038404036104bb57816003029160038304036104bb575f5260205f2091820191015b818110612bb6575050565b805f600392555f60018201555f600282015501612bab565b356001600160a01b03811681036102035790565b9068010000000000000000811161074f57815491818155828210612c0557505050565b826003029260038404036104bb57816003029160038304036104bb575f5260205f2091820191015b818110612c38575050565b805f600392555f60018201555f600282015501612c2d565b9060028110156105ed5760011b01905f90565b91908110156105ed576060020190565b9035601e198236030181121561020357016020813591019167ffffffffffffffff821161020357606082023603831361020357565b8035600481101561020357612cbc81612917565b8252602081013560208301526040810135601e198236030181121561020357810160208135910167ffffffffffffffff82116102035781360381136102035781601f1992601f9260a060408801528160a088015260c08701375f60c08287010152011682019060c082019160e0612d366060840184612c73565b86840360c0016060880152948590529101925f5b818110612dbc57505050612d648160806020930190612c73565b92909360808183039101528281520191905f5b818110612d845750505090565b90919260608060019260ff612d98886126ad565b16815260208701356020820152604087013560408201520194019101919091612d77565b9091936060806001926001600160a01b03612dd68961254a565b1681526001600160a01b03612ded60208a0161254a565b16602082015260408881013590820152019501929101612d4a565b91612e1e612e2c926060855260608501906128d0565b908382036020850152612ca8565b906040818303910152828152602081019260208160051b83010193835f91609e1982360301945b848410612e64575050505050505090565b90919293949596601f19828203018352873587811215610203576020612e8f60019387839401612ca8565b990193019401929195949390612e53565b90604051612ead81612596565b6040600282946001600160a01b0381541684526001600160a01b0360018201541660208501520154910152565b90604051612ee78161255e565b809260ff815416612ef781612917565b8252600181015460208301526002810160405190815f825492612f1984612b12565b808452936001811690811561305e575060011461301a575b50612f3e925003826125ce565b6040830152600381018054612f528161260d565b91612f6060405193846125ce565b81835260208301905f5260205f205f915b838310612ffc575050505090600491606084015201908154612f928161260d565b92612fa060405194856125ce565b81845260208401905f5260205f205f915b838310612fc2575050505060800152565b60036020600192604051612fd581612596565b60ff8654168152848601548382015260028601546040820152815201920192019190612fb1565b6003602060019261300c85612ea0565b815201920192019190612f71565b90505f9291925260205f20905f915b818310613042575050906020612f3e928201015f612f31565b6020919350806001915483858801015201910190918392613029565b60209350612f3e95925060ff1991501682840152151560051b8201015f612f31565b80548210156105ed575f5260205f2001905f90565b906040516130a28161257a565b6020600182946001600160a01b0381541684520154910152565b91906130ea576020816001600160a01b03806001945116166001600160a01b03198554161784550151910155565b634e487b7160e01b5f525f60045260245ffd5b903590601e1981360301821215610203570180359067ffffffffffffffff821161020357602001918160051b3603831361020357565b3567ffffffffffffffff811681036102035790565b359067ffffffffffffffff8216820361020357565b9190916080818403126102035760405190613177826125b2565b8193813567ffffffffffffffff81116102035782019080601f830112156102035781356131a38161260d565b926131b160405194856125ce565b81845260208085019260051b82010192831161020357602001905b82821061320d57505050606080926132089285526131ec6020820161254a565b60208601526131fd60408201613148565b604086015201613148565b910152565b6020809161321a8461254a565b8152019101906131cc565b60048101905b818110613236575050565b5f808255600182015560020161322b565b90608061325482846133b1565b910191825160028151148015906132dc575b6132d45761327661329291612847565b516001600160a01b036132898451612847565b51169084613498565b156132cd576001600160a01b036132b76132af6132bf9551612854565b519251612854565b511691613498565b156132c957600190565b5f90565b5050505f90565b505050505f90565b5060028251511415613266565b919091602060405180927fcc2a842d00000000000000000000000000000000000000000000000000000000825260406004830152816001600160a01b0381613349613337604483018b612ca8565b60031983820301602484015289612946565b0392165afa5f9181613374575b5061336957506020809101519101351190565b90505f8092500b1390565b9091506020813d6020116133a9575b81613390602093836125ce565b810103126102035751805f0b810361020357905f613356565b3d9150613383565b6133ba90613597565b908051906133c782612917565b60208101519161340c6060604084015193015192604051948593602085019788526133f181612917565b6040850152606084015260a0608084015260c0830190612921565b91601f198284030160a0830152602080825194858152019101925f5b81811061344a575050613444925003601f1981018352826125ce565b51902090565b91600191935061348960209186519060406060926001600160a01b0381511683526001600160a01b036020820151166020840152015160408201520190565b94019101918492939193613428565b6134c9926134c06001600160a01b039392849360ff815116604060208301519201519261383a565b909591956138bc565b1691161490565b8315613591576001600160a01b03165f52600160205260405f206001600160a01b0383165f528060205260405f205484811061357a57506001600160a01b0383165f528060205260405f2061352685825461283a565b90556001600160a01b0383165f52602052600160405f2001613549848254612a40565b90555f525f6020526001600160a01b03601260405f200191165f5260205261357660405f20918254612a40565b9055565b849063cf47918160e01b5f5260045260245260445ffd5b50505050565b80516001600160a01b0360208301511667ffffffffffffffff60608160408601511694015116604051928391602083019560a0840194608088528351809652602060c086019401955f5b81811061360c575050613444955060408501526060840152608083015203601f1981018352826125ce565b87516001600160a01b03168652602097880197899750909501946001016135e1565b929091928115613591575f525f602052601260405f2001916001600160a01b0384165f528260205260405f205491821561370e576001600160a01b0392818111156137065750925b8285165f5260205260405f2061368d84825461283a565b9055165f5260016020526001600160a01b0360405f20918184165f5282602052600160405f2001548181115f146136fe5750925b836136dc575b165f5260205261357660405f20918254612a40565b8181165f5282602052600160405f20016136f785825461283a565b90556136c7565b9050926136c1565b905092613676565b5050505050565b6001810190825f528160205260405f2054155f146132cd5780546801000000000000000081101561074f5761376a613754826001879401855584613080565b819391549060031b91821b915f19901b19161790565b905554915f5260205260405f2055600190565b906001820191815f528260205260405f20548015155f146132d4575f1981018181116104bb5782545f198101919082116104bb57818103613805575b505050805480156137f1575f1901906137d28282613080565b8154905f199060031b1b19169055555f526020525f6040812055600190565b634e487b7160e01b5f52603160045260245ffd5b6138256138156137549386613080565b90549060031b1c92839286613080565b90555f528360205260405f20555f80806137b9565b91907f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a084116138b1579160209360809260ff5f9560405194855216868401526040830152606082015282805260015afa156101e1575f516001600160a01b038116156138a757905f905f90565b505f906001905f90565b5050505f9160039190565b6138c581612917565b806138ce575050565b6138d781612917565b60018103613907577ff645eedf000000000000000000000000000000000000000000000000000000005f5260045ffd5b61391081612917565b6002810361394457507ffce698f7000000000000000000000000000000000000000000000000000000005f5260045260245ffd5b60039061395081612917565b146139585750565b7fd78bce0c000000000000000000000000000000000000000000000000000000005f5260045260245ffdfea264697066735822122062ceab7c809564c098e9ad29f96cbc937a3ee90c3630e00beea929b8947a62f864736f6c634300081b0033",
 }
 
 // CustodyABI is the input ABI used to generate the binding from.
 // Deprecated: Use CustodyMetaData.ABI instead.
 var CustodyABI = CustodyMetaData.ABI
+
+// CustodyBin is the compiled bytecode used for deploying new contracts.
+// Deprecated: Use CustodyMetaData.Bin instead.
+var CustodyBin = CustodyMetaData.Bin
+
+// DeployCustody deploys a new Ethereum contract, binding an instance of Custody to it.
+func DeployCustody(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *Custody, error) {
+	parsed, err := CustodyMetaData.GetAbi()
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	if parsed == nil {
+		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
+	}
+
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(CustodyBin), backend)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &Custody{CustodyCaller: CustodyCaller{contract: contract}, CustodyTransactor: CustodyTransactor{contract: contract}, CustodyFilterer: CustodyFilterer{contract: contract}}, nil
+}
 
 // Custody is an auto generated Go binding around an Ethereum contract.
 type Custody struct {
@@ -289,86 +313,86 @@ func (_Custody *CustodyCallerSession) GetAccountInfo(user common.Address, token 
 	return _Custody.Contract.GetAccountInfo(&_Custody.CallOpts, user, token)
 }
 
-// Challenge is a paid mutator transaction binding the contract method 0x234e3bad.
+// Challenge is a paid mutator transaction binding the contract method 0x7de7ad62.
 //
-// Solidity: function challenge(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function challenge(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodyTransactor) Challenge(opts *bind.TransactOpts, channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.contract.Transact(opts, "challenge", channelId, candidate, proofs)
 }
 
-// Challenge is a paid mutator transaction binding the contract method 0x234e3bad.
+// Challenge is a paid mutator transaction binding the contract method 0x7de7ad62.
 //
-// Solidity: function challenge(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function challenge(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodySession) Challenge(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.Contract.Challenge(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
-// Challenge is a paid mutator transaction binding the contract method 0x234e3bad.
+// Challenge is a paid mutator transaction binding the contract method 0x7de7ad62.
 //
-// Solidity: function challenge(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function challenge(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodyTransactorSession) Challenge(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.Contract.Challenge(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
-// Checkpoint is a paid mutator transaction binding the contract method 0x957105f2.
+// Checkpoint is a paid mutator transaction binding the contract method 0xd0cce1e8.
 //
-// Solidity: function checkpoint(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function checkpoint(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodyTransactor) Checkpoint(opts *bind.TransactOpts, channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.contract.Transact(opts, "checkpoint", channelId, candidate, proofs)
 }
 
-// Checkpoint is a paid mutator transaction binding the contract method 0x957105f2.
+// Checkpoint is a paid mutator transaction binding the contract method 0xd0cce1e8.
 //
-// Solidity: function checkpoint(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function checkpoint(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodySession) Checkpoint(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.Contract.Checkpoint(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
-// Checkpoint is a paid mutator transaction binding the contract method 0x957105f2.
+// Checkpoint is a paid mutator transaction binding the contract method 0xd0cce1e8.
 //
-// Solidity: function checkpoint(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+// Solidity: function checkpoint(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
 func (_Custody *CustodyTransactorSession) Checkpoint(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
 	return _Custody.Contract.Checkpoint(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
-// Close is a paid mutator transaction binding the contract method 0x9958e3df.
+// Close is a paid mutator transaction binding the contract method 0xde22731f.
 //
-// Solidity: function close(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
-func (_Custody *CustodyTransactor) Close(opts *bind.TransactOpts, channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
-	return _Custody.contract.Transact(opts, "close", channelId, candidate, proofs)
+// Solidity: function close(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] ) returns()
+func (_Custody *CustodyTransactor) Close(opts *bind.TransactOpts, channelId [32]byte, candidate State, arg2 []State) (*types.Transaction, error) {
+	return _Custody.contract.Transact(opts, "close", channelId, candidate, arg2)
 }
 
-// Close is a paid mutator transaction binding the contract method 0x9958e3df.
+// Close is a paid mutator transaction binding the contract method 0xde22731f.
 //
-// Solidity: function close(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
-func (_Custody *CustodySession) Close(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
-	return _Custody.Contract.Close(&_Custody.TransactOpts, channelId, candidate, proofs)
+// Solidity: function close(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] ) returns()
+func (_Custody *CustodySession) Close(channelId [32]byte, candidate State, arg2 []State) (*types.Transaction, error) {
+	return _Custody.Contract.Close(&_Custody.TransactOpts, channelId, candidate, arg2)
 }
 
-// Close is a paid mutator transaction binding the contract method 0x9958e3df.
+// Close is a paid mutator transaction binding the contract method 0xde22731f.
 //
-// Solidity: function close(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
-func (_Custody *CustodyTransactorSession) Close(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
-	return _Custody.Contract.Close(&_Custody.TransactOpts, channelId, candidate, proofs)
+// Solidity: function close(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] ) returns()
+func (_Custody *CustodyTransactorSession) Close(channelId [32]byte, candidate State, arg2 []State) (*types.Transaction, error) {
+	return _Custody.Contract.Close(&_Custody.TransactOpts, channelId, candidate, arg2)
 }
 
-// Create is a paid mutator transaction binding the contract method 0xd374bc76.
+// Create is a paid mutator transaction binding the contract method 0xd37ff7b5.
 //
-// Solidity: function create((address[],address,uint64,uint64) ch, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
+// Solidity: function create((address[],address,uint64,uint64) ch, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
 func (_Custody *CustodyTransactor) Create(opts *bind.TransactOpts, ch Channel, initial State) (*types.Transaction, error) {
 	return _Custody.contract.Transact(opts, "create", ch, initial)
 }
 
-// Create is a paid mutator transaction binding the contract method 0xd374bc76.
+// Create is a paid mutator transaction binding the contract method 0xd37ff7b5.
 //
-// Solidity: function create((address[],address,uint64,uint64) ch, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
+// Solidity: function create((address[],address,uint64,uint64) ch, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
 func (_Custody *CustodySession) Create(ch Channel, initial State) (*types.Transaction, error) {
 	return _Custody.Contract.Create(&_Custody.TransactOpts, ch, initial)
 }
 
-// Create is a paid mutator transaction binding the contract method 0xd374bc76.
+// Create is a paid mutator transaction binding the contract method 0xd37ff7b5.
 //
-// Solidity: function create((address[],address,uint64,uint64) ch, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
+// Solidity: function create((address[],address,uint64,uint64) ch, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial) returns(bytes32 channelId)
 func (_Custody *CustodyTransactorSession) Create(ch Channel, initial State) (*types.Transaction, error) {
 	return _Custody.Contract.Create(&_Custody.TransactOpts, ch, initial)
 }
@@ -415,25 +439,25 @@ func (_Custody *CustodyTransactorSession) Join(channelId [32]byte, index *big.In
 	return _Custody.Contract.Join(&_Custody.TransactOpts, channelId, index, sig)
 }
 
-// Reset is a paid mutator transaction binding the contract method 0xf478513b.
+// Resize is a paid mutator transaction binding the contract method 0x259311c9.
 //
-// Solidity: function reset(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs, (address[],address,uint64,uint64) newChannel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) newDeposit) returns()
-func (_Custody *CustodyTransactor) Reset(opts *bind.TransactOpts, channelId [32]byte, candidate State, proofs []State, newChannel Channel, newDeposit State) (*types.Transaction, error) {
-	return _Custody.contract.Transact(opts, "reset", channelId, candidate, proofs, newChannel, newDeposit)
+// Solidity: function resize(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+func (_Custody *CustodyTransactor) Resize(opts *bind.TransactOpts, channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
+	return _Custody.contract.Transact(opts, "resize", channelId, candidate, proofs)
 }
 
-// Reset is a paid mutator transaction binding the contract method 0xf478513b.
+// Resize is a paid mutator transaction binding the contract method 0x259311c9.
 //
-// Solidity: function reset(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs, (address[],address,uint64,uint64) newChannel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) newDeposit) returns()
-func (_Custody *CustodySession) Reset(channelId [32]byte, candidate State, proofs []State, newChannel Channel, newDeposit State) (*types.Transaction, error) {
-	return _Custody.Contract.Reset(&_Custody.TransactOpts, channelId, candidate, proofs, newChannel, newDeposit)
+// Solidity: function resize(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+func (_Custody *CustodySession) Resize(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
+	return _Custody.Contract.Resize(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
-// Reset is a paid mutator transaction binding the contract method 0xf478513b.
+// Resize is a paid mutator transaction binding the contract method 0x259311c9.
 //
-// Solidity: function reset(bytes32 channelId, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs, (address[],address,uint64,uint64) newChannel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) newDeposit) returns()
-func (_Custody *CustodyTransactorSession) Reset(channelId [32]byte, candidate State, proofs []State, newChannel Channel, newDeposit State) (*types.Transaction, error) {
-	return _Custody.Contract.Reset(&_Custody.TransactOpts, channelId, candidate, proofs, newChannel, newDeposit)
+// Solidity: function resize(bytes32 channelId, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) candidate, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[])[] proofs) returns()
+func (_Custody *CustodyTransactorSession) Resize(channelId [32]byte, candidate State, proofs []State) (*types.Transaction, error) {
+	return _Custody.Contract.Resize(&_Custody.TransactOpts, channelId, candidate, proofs)
 }
 
 // Withdraw is a paid mutator transaction binding the contract method 0xf3fef3a3.
@@ -602,150 +626,6 @@ func (_Custody *CustodyFilterer) ParseChallenged(log types.Log) (*CustodyChallen
 	return event, nil
 }
 
-// CustodyChannelClosedIterator is returned from FilterChannelClosed and is used to iterate over the raw logs and unpacked data for ChannelClosed events raised by the Custody contract.
-type CustodyChannelClosedIterator struct {
-	Event *CustodyChannelClosed // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *CustodyChannelClosedIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(CustodyChannelClosed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(CustodyChannelClosed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *CustodyChannelClosedIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *CustodyChannelClosedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// CustodyChannelClosed represents a ChannelClosed event raised by the Custody contract.
-type CustodyChannelClosed struct {
-	ChannelId [32]byte
-	Raw       types.Log // Blockchain specific contextual infos
-}
-
-// FilterChannelClosed is a free log retrieval operation binding the contract event 0xceeab2eef998c17fe96f30f83fbf3c55fc5047f6e40c55a0cf72d236e9d2ba72.
-//
-// Solidity: event ChannelClosed(bytes32 indexed channelId)
-func (_Custody *CustodyFilterer) FilterChannelClosed(opts *bind.FilterOpts, channelId [][32]byte) (*CustodyChannelClosedIterator, error) {
-
-	var channelIdRule []interface{}
-	for _, channelIdItem := range channelId {
-		channelIdRule = append(channelIdRule, channelIdItem)
-	}
-
-	logs, sub, err := _Custody.contract.FilterLogs(opts, "ChannelClosed", channelIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return &CustodyChannelClosedIterator{contract: _Custody.contract, event: "ChannelClosed", logs: logs, sub: sub}, nil
-}
-
-// WatchChannelClosed is a free log subscription operation binding the contract event 0xceeab2eef998c17fe96f30f83fbf3c55fc5047f6e40c55a0cf72d236e9d2ba72.
-//
-// Solidity: event ChannelClosed(bytes32 indexed channelId)
-func (_Custody *CustodyFilterer) WatchChannelClosed(opts *bind.WatchOpts, sink chan<- *CustodyChannelClosed, channelId [][32]byte) (event.Subscription, error) {
-
-	var channelIdRule []interface{}
-	for _, channelIdItem := range channelId {
-		channelIdRule = append(channelIdRule, channelIdItem)
-	}
-
-	logs, sub, err := _Custody.contract.WatchLogs(opts, "ChannelClosed", channelIdRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(CustodyChannelClosed)
-				if err := _Custody.contract.UnpackLog(event, "ChannelClosed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseChannelClosed is a log parse operation binding the contract event 0xceeab2eef998c17fe96f30f83fbf3c55fc5047f6e40c55a0cf72d236e9d2ba72.
-//
-// Solidity: event ChannelClosed(bytes32 indexed channelId)
-func (_Custody *CustodyFilterer) ParseChannelClosed(log types.Log) (*CustodyChannelClosed, error) {
-	event := new(CustodyChannelClosed)
-	if err := _Custody.contract.UnpackLog(event, "ChannelClosed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
 // CustodyCheckpointedIterator is returned from FilterCheckpointed and is used to iterate over the raw logs and unpacked data for Checkpointed events raised by the Custody contract.
 type CustodyCheckpointedIterator struct {
 	Event *CustodyCheckpointed // Event containing the contract specifics and raw log
@@ -890,6 +770,150 @@ func (_Custody *CustodyFilterer) ParseCheckpointed(log types.Log) (*CustodyCheck
 	return event, nil
 }
 
+// CustodyClosedIterator is returned from FilterClosed and is used to iterate over the raw logs and unpacked data for Closed events raised by the Custody contract.
+type CustodyClosedIterator struct {
+	Event *CustodyClosed // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *CustodyClosedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(CustodyClosed)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(CustodyClosed)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *CustodyClosedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *CustodyClosedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// CustodyClosed represents a Closed event raised by the Custody contract.
+type CustodyClosed struct {
+	ChannelId [32]byte
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
+// FilterClosed is a free log retrieval operation binding the contract event 0x7b6ac8bce3193cb9464e9070476bf8926e449f5f743f8c7578eea15265467d79.
+//
+// Solidity: event Closed(bytes32 indexed channelId)
+func (_Custody *CustodyFilterer) FilterClosed(opts *bind.FilterOpts, channelId [][32]byte) (*CustodyClosedIterator, error) {
+
+	var channelIdRule []interface{}
+	for _, channelIdItem := range channelId {
+		channelIdRule = append(channelIdRule, channelIdItem)
+	}
+
+	logs, sub, err := _Custody.contract.FilterLogs(opts, "Closed", channelIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return &CustodyClosedIterator{contract: _Custody.contract, event: "Closed", logs: logs, sub: sub}, nil
+}
+
+// WatchClosed is a free log subscription operation binding the contract event 0x7b6ac8bce3193cb9464e9070476bf8926e449f5f743f8c7578eea15265467d79.
+//
+// Solidity: event Closed(bytes32 indexed channelId)
+func (_Custody *CustodyFilterer) WatchClosed(opts *bind.WatchOpts, sink chan<- *CustodyClosed, channelId [][32]byte) (event.Subscription, error) {
+
+	var channelIdRule []interface{}
+	for _, channelIdItem := range channelId {
+		channelIdRule = append(channelIdRule, channelIdItem)
+	}
+
+	logs, sub, err := _Custody.contract.WatchLogs(opts, "Closed", channelIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(CustodyClosed)
+				if err := _Custody.contract.UnpackLog(event, "Closed", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseClosed is a log parse operation binding the contract event 0x7b6ac8bce3193cb9464e9070476bf8926e449f5f743f8c7578eea15265467d79.
+//
+// Solidity: event Closed(bytes32 indexed channelId)
+func (_Custody *CustodyFilterer) ParseClosed(log types.Log) (*CustodyClosed, error) {
+	event := new(CustodyClosed)
+	if err := _Custody.contract.UnpackLog(event, "Closed", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // CustodyCreatedIterator is returned from FilterCreated and is used to iterate over the raw logs and unpacked data for Created events raised by the Custody contract.
 type CustodyCreatedIterator struct {
 	Event *CustodyCreated // Event containing the contract specifics and raw log
@@ -965,9 +989,9 @@ type CustodyCreated struct {
 	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterCreated is a free log retrieval operation binding the contract event 0x9cf47bec6921029dd28de10cd49d84ea4f8ff5520f34e71399741090651b0cc6.
+// FilterCreated is a free log retrieval operation binding the contract event 0xeb84f2497711f038aa068f535dac65569ca5f694054c11ee7439cde944382164.
 //
-// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
+// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
 func (_Custody *CustodyFilterer) FilterCreated(opts *bind.FilterOpts, channelId [][32]byte) (*CustodyCreatedIterator, error) {
 
 	var channelIdRule []interface{}
@@ -982,9 +1006,9 @@ func (_Custody *CustodyFilterer) FilterCreated(opts *bind.FilterOpts, channelId 
 	return &CustodyCreatedIterator{contract: _Custody.contract, event: "Created", logs: logs, sub: sub}, nil
 }
 
-// WatchCreated is a free log subscription operation binding the contract event 0x9cf47bec6921029dd28de10cd49d84ea4f8ff5520f34e71399741090651b0cc6.
+// WatchCreated is a free log subscription operation binding the contract event 0xeb84f2497711f038aa068f535dac65569ca5f694054c11ee7439cde944382164.
 //
-// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
+// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
 func (_Custody *CustodyFilterer) WatchCreated(opts *bind.WatchOpts, sink chan<- *CustodyCreated, channelId [][32]byte) (event.Subscription, error) {
 
 	var channelIdRule []interface{}
@@ -1024,9 +1048,9 @@ func (_Custody *CustodyFilterer) WatchCreated(opts *bind.WatchOpts, sink chan<- 
 	}), nil
 }
 
-// ParseCreated is a log parse operation binding the contract event 0x9cf47bec6921029dd28de10cd49d84ea4f8ff5520f34e71399741090651b0cc6.
+// ParseCreated is a log parse operation binding the contract event 0xeb84f2497711f038aa068f535dac65569ca5f694054c11ee7439cde944382164.
 //
-// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
+// Solidity: event Created(bytes32 indexed channelId, (address[],address,uint64,uint64) channel, (uint8,uint256,bytes,(address,address,uint256)[],(uint8,bytes32,bytes32)[]) initial)
 func (_Custody *CustodyFilterer) ParseCreated(log types.Log) (*CustodyCreated, error) {
 	event := new(CustodyCreated)
 	if err := _Custody.contract.UnpackLog(event, "Created", log); err != nil {
@@ -1319,6 +1343,151 @@ func (_Custody *CustodyFilterer) WatchOpened(opts *bind.WatchOpts, sink chan<- *
 func (_Custody *CustodyFilterer) ParseOpened(log types.Log) (*CustodyOpened, error) {
 	event := new(CustodyOpened)
 	if err := _Custody.contract.UnpackLog(event, "Opened", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// CustodyResizedIterator is returned from FilterResized and is used to iterate over the raw logs and unpacked data for Resized events raised by the Custody contract.
+type CustodyResizedIterator struct {
+	Event *CustodyResized // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *CustodyResizedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(CustodyResized)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(CustodyResized)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *CustodyResizedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *CustodyResizedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// CustodyResized represents a Resized event raised by the Custody contract.
+type CustodyResized struct {
+	ChannelId        [32]byte
+	DeltaAllocations []*big.Int
+	Raw              types.Log // Blockchain specific contextual infos
+}
+
+// FilterResized is a free log retrieval operation binding the contract event 0xf3b6c524f73df7344d9fcf2f960a57aba7fba7e292d8b79ed03d786f7b2b112f.
+//
+// Solidity: event Resized(bytes32 indexed channelId, int256[] deltaAllocations)
+func (_Custody *CustodyFilterer) FilterResized(opts *bind.FilterOpts, channelId [][32]byte) (*CustodyResizedIterator, error) {
+
+	var channelIdRule []interface{}
+	for _, channelIdItem := range channelId {
+		channelIdRule = append(channelIdRule, channelIdItem)
+	}
+
+	logs, sub, err := _Custody.contract.FilterLogs(opts, "Resized", channelIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return &CustodyResizedIterator{contract: _Custody.contract, event: "Resized", logs: logs, sub: sub}, nil
+}
+
+// WatchResized is a free log subscription operation binding the contract event 0xf3b6c524f73df7344d9fcf2f960a57aba7fba7e292d8b79ed03d786f7b2b112f.
+//
+// Solidity: event Resized(bytes32 indexed channelId, int256[] deltaAllocations)
+func (_Custody *CustodyFilterer) WatchResized(opts *bind.WatchOpts, sink chan<- *CustodyResized, channelId [][32]byte) (event.Subscription, error) {
+
+	var channelIdRule []interface{}
+	for _, channelIdItem := range channelId {
+		channelIdRule = append(channelIdRule, channelIdItem)
+	}
+
+	logs, sub, err := _Custody.contract.WatchLogs(opts, "Resized", channelIdRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(CustodyResized)
+				if err := _Custody.contract.UnpackLog(event, "Resized", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseResized is a log parse operation binding the contract event 0xf3b6c524f73df7344d9fcf2f960a57aba7fba7e292d8b79ed03d786f7b2b112f.
+//
+// Solidity: event Resized(bytes32 indexed channelId, int256[] deltaAllocations)
+func (_Custody *CustodyFilterer) ParseResized(log types.Log) (*CustodyResized, error) {
+	event := new(CustodyResized)
+	if err := _Custody.contract.UnpackLog(event, "Resized", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
