@@ -59,14 +59,14 @@ func EncodeState(channelID common.Hash, intent Intent, version *big.Int, stateDa
 	}
 
 	args := abi.Arguments{
-		{Type: intentType},  // intent
-		{Type: versionType}, // version
 		{Type: abi.Type{T: abi.FixedBytesTy, Size: 32}}, // channelId
-		{Type: abi.Type{T: abi.BytesTy}},                // data
-		{Type: allocationType},                          // allocations as tuple[]
+		{Type: intentType},               // intent
+		{Type: versionType},              // version
+		{Type: abi.Type{T: abi.BytesTy}}, // data
+		{Type: allocationType},           // allocations as tuple[]
 	}
 
-	packed, err := args.Pack(channelID, stateData, allocations)
+	packed, err := args.Pack(channelID, intent, version, stateData, allocValues)
 	if err != nil {
 		return nil, err
 	}
