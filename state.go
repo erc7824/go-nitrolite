@@ -27,19 +27,6 @@ func EncodeState(channelID common.Hash, intent Intent, version *big.Int, stateDa
 		return nil, err
 	}
 
-	var allocValues []any
-	for _, alloc := range allocations {
-		allocValues = append(allocValues, struct {
-			Destination common.Address
-			Token       common.Address
-			Amount      *big.Int
-		}{
-			Destination: alloc.Destination,
-			Token:       alloc.Token,
-			Amount:      alloc.Amount,
-		})
-	}
-
 	intentType, err := abi.NewType("uint8", "", nil)
 	if err != nil {
 		return nil, err
