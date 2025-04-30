@@ -19,18 +19,9 @@ const (
 // EncodeState encodes channel state into a byte array using channelID, intent, version, state data, and allocations.
 func EncodeState(channelID common.Hash, intent Intent, version *big.Int, stateData []byte, allocations []Allocation) ([]byte, error) {
 	allocationType, err := abi.NewType("tuple[]", "", []abi.ArgumentMarshaling{
-		{
-			Name: "destination",
-			Type: "address",
-		},
-		{
-			Name: "token",
-			Type: "address",
-		},
-		{
-			Name: "amount",
-			Type: "uint256",
-		},
+		{Name: "destination", Type: "address"},
+		{Name: "token", Type: "address"},
+		{Name: "amount", Type: "uint256"},
 	})
 	if err != nil {
 		return nil, err
@@ -59,14 +50,14 @@ func EncodeState(channelID common.Hash, intent Intent, version *big.Int, stateDa
 	}
 
 	args := abi.Arguments{
-		{Type: abi.Type{T: abi.FixedBytesTy, Size: 32}}, // channelId
+		{Type: abi.Type{T: abi.FixedBytesTy, Size: 32}}, // channelID
 		{Type: intentType},               // intent
 		{Type: versionType},              // version
-		{Type: abi.Type{T: abi.BytesTy}}, // data
-		{Type: allocationType},           // allocations as tuple[]
+		{Type: abi.Type{T: abi.BytesTy}}, // stateData
+		{Type: allocationType},           // allocations (tuple[])
 	}
 
-	packed, err := args.Pack(channelID, intent, version, stateData, allocValues)
+	packed, err := args.Pack(channelID, uint8(intent), version, stateData, allocations)
 	if err != nil {
 		return nil, err
 	}
