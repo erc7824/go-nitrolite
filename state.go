@@ -7,8 +7,17 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 )
 
-// EncodeState encodes channel state into a byte array using channelID, state data, and allocations.
-func EncodeState(channelID common.Hash, stateData []byte, allocations []Allocation) ([]byte, error) {
+type Intent uint8
+
+const (
+	IntentOPERATE    Intent = 0
+	IntentINITIALIZE Intent = 1
+	IntentRESIZE     Intent = 2
+	IntentFINALIZE   Intent = 3
+)
+
+// EncodeState encodes channel state into a byte array using channelID, intent, version, state data, and allocations.
+func EncodeState(channelID common.Hash, intent Intent, version *big.Int, stateData []byte, allocations []Allocation) ([]byte, error) {
 	allocationType, err := abi.NewType("tuple[]", "", []abi.ArgumentMarshaling{
 		{
 			Name: "destination",
@@ -40,7 +49,18 @@ func EncodeState(channelID common.Hash, stateData []byte, allocations []Allocati
 		})
 	}
 
+	intentType, err := abi.NewType("uint8", "", nil)
+	if err != nil {
+		return nil, err
+	}
+	versionType, err := abi.NewType("uint256", "", nil)
+	if err != nil {
+		return nil, err
+	}
+
 	args := abi.Arguments{
+		{Type: intentType},  // intent
+		{Type: versionType}, // version
 		{Type: abi.Type{T: abi.FixedBytesTy, Size: 32}}, // channelId
 		{Type: abi.Type{T: abi.BytesTy}},                // data
 		{Type: allocationType},                          // allocations as tuple[]
